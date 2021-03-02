@@ -53,7 +53,6 @@ df=df.values.reshape(rows_df,5)
 df=pd.DataFrame(df)
 df.to_csv("df1.csv")
 
-
 #page 2 
 ##############################
 page=40
@@ -1391,7 +1390,7 @@ f1.update_layout(
 )            
 f1.show()
 
-#most frequent flight numbers?
+#most frequent flight numbers
 fl_no=to2.flight_no.value_counts()
 fl_no=pd.DataFrame(fl_no)
 fl_no.reset_index(level=0,inplace=True)
@@ -1400,7 +1399,7 @@ fl_no=fl_no[fl_no['count']>=5]
 fl_no_list=fl_no['flight_no'].tolist()
 fl_no_list 
 
-#cities with este flight numbers? (minimum 5 flights) 
+#cities with flight numbers (minimum 5 flights) 
 fl_no1=to2[to2.flight_no.isin(fl_no_list)]
 cities1=fl_no1.drop_duplicates(subset=['dep','arr_time'],keep="last")
 cities1=cities1[["flight_no","dep","dep_time","arr_time"]]
@@ -1478,28 +1477,4 @@ plt.ylabel('percent of all arrivals')
 plt.xlabel('')
 plt.title('Popular Airlines Landing in ' + airport_name)
 plt.savefig('arrivals_city.png')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
